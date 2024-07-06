@@ -61,5 +61,5 @@ git config --global user.name
 git config --global user.email
 
 # 2. 기본 브랜치명 변경
-git config --global init.defaultBranch main
+git config --global init.defaultBranch master
 git config --global init.defaultBranch
