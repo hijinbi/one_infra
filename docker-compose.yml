@@ -23,7 +23,7 @@ services:
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/world
       SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: hellorain78!
+      SPRING_DATASOURCE_PASSWORD: docker
       SPRING_DATASOURCE_DRIVER: org.postgresql.Driver  
     networks:
       - network
