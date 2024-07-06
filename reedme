@@ -1,0 +1,53 @@
+# aws freetier gradle 빌드 메모리 문제 
+
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+sudo swapon -s
+sudo vi /etc/fstab
+/swapfile swap swap defaults 0 0
+
+
+free 메모리 확인
+
+---------------------------------------------
+모든 도커 컨테이너 삭제(remove all docker containers)구동중인 모든 도커 컨테이너들을 중지시키고, 삭제한다.
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+
+모든 도커 이미지 삭제(remove all docker images)
+ docker rmi $(docker images -q)
+
+# 컨테이너 중지
+docker container stop [컨테이너ID]
+# 컨테이너 삭제
+docker container rm [컨테이너ID]
+
+# 모든 컨테이너 중지
+docker stop $(docker ps -a -q)
+#모든 컨테이너 삭제
+docker rm $(docker ps -a -q)
+# 이미지 삭제
+docker rmi [이미지ID]
+
+# 모든 이미지 삭제
+docker rmi $(docker images -q)
+# 사용하지 않는 모든 볼륨 (컨테이너가없는 볼륨 포함)를 제거
+docker system prune
+
+# 사용하지 않은 볼륨 조회
+docker volume ls -qf dangling=true
+
+# 사용하지 않은 볼륨 삭제
+docker volume rm $(docker volume ls -qf dangling=true)
+
+# 사용하지 않은 볼륨 조회 및 삭제
+docker volume ls -qf dangling=true | xargs -r docker volume rm
+# 중지된 모든 컨테이너를 삭제
+docker container prune
+
+# 이름 없는 모든 이미지를 삭제
+docker image prune
+
+# 사용하지 않는 도커 네트워크를 모두 삭제
+docker network prune
