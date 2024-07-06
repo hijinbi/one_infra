@@ -1,5 +1,6 @@
 store/
 
+docker*
 # Compiled class file
 *.class
 
