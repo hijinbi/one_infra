@@ -11,9 +11,10 @@ services:
       - ./db/store:/var/lib/postgresql/data
     networks:
       - network
-  server:
+
+  backend:
     build: 
-      context: ./spring
+      context: ./backend
       dockerfile: Dockerfile
     #restart: always
     ports:
@@ -26,6 +27,18 @@ services:
       SPRING_DATASOURCE_PASSWORD: docker
       SPRING_DATASOURCE_DRIVER: org.postgresql.Driver  
     networks:
+      - network
+    
+    frontend:
+      build:
+        context: ./frontend
+        dockerfile: Dockerfile
+        #restart: always
+      ports:
+        - 80:80
+      depends_on:
+      - backend
+      networks:
       - network
 
 networks:
