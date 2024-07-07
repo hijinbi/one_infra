@@ -4,7 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   const [products, setProducts] = useState([]);
 
@@ -19,7 +19,7 @@ function App() {
   // 어떤 값이 변경될때 
   useEffect(()=>{
     onLoad();
-  }, [])
+  }, []);
 
   return (
     <>
@@ -44,7 +44,7 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
       <div>
-          {products.map((product) => <h1>1:{product}</h1>)}
+          {products.map((product) => <h1>1:{product.name}</h1>)}
       </div>
     </>
   )
